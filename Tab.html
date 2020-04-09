@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="Tab.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab</title>
+</head>
+<body>
+  <div id="app">
+    <tabview></tabview>
+  </div>
+</body>
+</html>
+
+<script type="text/x-template" id="tab-button">
+  <button @click="$emit('input', id)" :class="[active, 'tab']">
+    {{ label }}
+  </button>
+</script>
+
+<script type="text/x-template" id="tab-view">
+  <div class="example">
+    <div class="tabs">
+      <TabItem
+        v-for="item in list"
+        v-bind="item" :key="item.id"
+        v-model="currentId"/>
+    </div>
+    <div class="contents">
+      <transition>
+        <section class="item" :key="currentId">
+          {{ current.content }}
+        </section>
+      </transition>
+    </div>
+  </div>
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="Tab.js"></script>

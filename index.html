@@ -9,8 +9,10 @@
   <noscript>
     <strong>Javascriptが無効化されています</strong>
   </noscript>
-  <div id="app">
-    <p>{{ message }}</p>
+
+  <div id="like-counter">
+    <like-button v-on:alert="presentAlert()"></like-button>
+    <p>{{count}}</p>
   </div>
 </body>
 </html>
